@@ -1,0 +1,15 @@
+@import './layout.scss';
+@import './theme.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+html, body, #app {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
