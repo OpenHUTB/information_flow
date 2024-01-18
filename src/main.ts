@@ -6,7 +6,12 @@ import 'element-plus/dist/index.css'
 import './assets/styles/index.scss'
 
 const app = createApp(App)
-
 app.use(router)
-
 app.mount('#app')
+
+// 获取浏览器窗口高度
+let windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+let windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+document.documentElement.style.setProperty('--window-height', windowHeight + 'px');
+document.documentElement.style.setProperty('--window-width', windowWidth + 'px');
+// console.log('windowHeight',windowHeight)

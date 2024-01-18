@@ -5,7 +5,8 @@ import NotFound from '@/views/404.vue'
 import Recommend from '@/views/menu/recommend.vue'
 import Designer from '@/views/menu/designer.vue'
 import Module from '@/views/menu/module.vue'
-import Roulette from '@/views/menu/roulette.vue'
+import Progress from '@/views/menu/designer/progress.vue'
+import History from '@/views/menu/designer/history.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,7 +28,19 @@ const router = createRouter({
             {
               path: '/designer',
               name: 'designer',
-              component: Designer
+              redirect: '/progress',
+              children: [
+                {
+                  path: '/progress',
+                  name: 'progress',
+                  component: Progress,
+                },
+                {
+                  path: '/history',
+                  name: 'history',
+                  component: History,
+                },
+              ]
             },
             {
               path: '/module',

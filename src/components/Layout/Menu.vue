@@ -13,19 +13,14 @@
           <el-icon><location /></el-icon>
           <span>首页推荐</span>
         </el-menu-item>
-        <!-- <el-menu-item index="designer">
-          <el-icon><document /></el-icon>
-          <span>订单管理</span>
-        </el-menu-item> -->
-
-        <el-sub-menu index="designer">
+        <el-sub-menu index="progress">
           <template #title>
             <el-icon><document /></el-icon>
             <span>订单管理</span>
           </template>
           <el-menu-item-group>
-            <el-menu-item index="des-progress">订单进度</el-menu-item>
-            <el-menu-item index="des-history">历史订单</el-menu-item>
+            <el-menu-item index="progress">订单进度</el-menu-item>
+            <el-menu-item index="history">历史订单</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
 
@@ -80,4 +75,10 @@ const handleSelect = (key: string, keyPath: string[]) => {
 .el-sub-menu .el-sub-menu__icon-arrow {
   width: auto;
 }
+:deep(.el-sub-menu__title):hover {
+  background-color: $backHover !important;
+}
+// .el-menu-item-group__title {
+//   height: 0px !important;
+// }
 </style>
