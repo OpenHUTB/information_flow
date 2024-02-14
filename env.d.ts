@@ -9,3 +9,7 @@ declare module '*.scss' {
     const css: String;
     export default css;
 }
+
+declare module '*.ts'
+
+declare module 'js-cookie';

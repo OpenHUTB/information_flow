@@ -2,15 +2,16 @@
   <el-row class="menu">
     <el-col :span="12">
       <el-menu
-        :default-active="data.active"
+        :default-active="activeMenu"
+        :collapse="isCollapse"
         background-color="#ffffff"
         text-color="#333333"
-        active-text-color="#39CCC5"
+        active-text-color="#6497F6"
         class="aside-menu"
         @select="handleSelect"
       >
         <el-menu-item index="recommend">
-          <el-icon><location /></el-icon>
+          <el-icon><Guide /></el-icon>
           <span>首页推荐</span>
         </el-menu-item>
         <el-sub-menu index="progress">
@@ -29,30 +30,32 @@
           <span>系统设置</span>
         </el-menu-item>
 
+        <div class="fold w-6 h-6 cursor-pointer" @click="isCollapse = !isCollapse">
+          <el-icon size="18" color="#333" v-if="isCollapse"><Expand /></el-icon>
+          <el-icon size="18" color="#333" v-else><Fold /></el-icon>
+        </div>
       </el-menu>
     </el-col>
   </el-row>
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted, computed } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { Document, Location, Setting, Flag } from '@element-plus/icons-vue'
+import { Document, Guide, Setting, Expand, Fold } from '@element-plus/icons-vue'
 
 const route = useRoute();
 const router = useRouter();
-const data = reactive({
-  active: 'recommend'
-})
+let activeMenu = ref('recommend')
+let isCollapse = ref(true)
 
 onMounted(() => {
-  data.active = (route.name as string) || 'default'
+  activeMenu.value = (route.name as string) || 'default'
 })
 
 const handleSelect = (key: string, keyPath: string[]) => {
-  data.active = key
+  activeMenu.value = key
   router.push(`/${key}`)
-  // console.log(key, keyPath)
 }
 </script>
 
@@ -61,24 +64,45 @@ const handleSelect = (key: string, keyPath: string[]) => {
 
 .menu, .el-col {
   display: block;
+  position: relative;
   width: 100%;
   height: 100%;
   max-width: none;
   .el-menu {
     height: 100%;
-    // text-color: #fff;
   }
 }
-.el-menu-item:hover {
-  background-color: $backHover;
+
+.fold {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 16px;
+  right: 24px;
+  background-color: #eee;
+  border-radius: 12px;
 }
+
+.el-menu-item:hover {
+  background-color: $backHover;}
 .el-sub-menu .el-sub-menu__icon-arrow {
   width: auto;
+}
+:deep(.el-menu-item) {
+  padding-left: 20px !important;
+  padding-right: 40px !important;
+}
+:deep(.el-sub-menu__title) {
+  padding-left: 20px !important;
 }
 :deep(.el-sub-menu__title):hover {
   background-color: $backHover !important;
 }
-// .el-menu-item-group__title {
-//   height: 0px !important;
-// }
+:deep(.el-menu-item-group .el-menu-item-group__title) {
+  display: none !important;
+}
+:deep(.el-menu-item-group .el-menu-item) {
+  padding-left: 48px !important;
+}
 </style>

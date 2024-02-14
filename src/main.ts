@@ -3,9 +3,14 @@ import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import './assets/tailwind.css'
 import './assets/styles/index.scss'
+import store from './store'
+import './mock/index.js'
+import axios from 'axios'
 
 const app = createApp(App)
+
 app.use(router)
 app.mount('#app')
 

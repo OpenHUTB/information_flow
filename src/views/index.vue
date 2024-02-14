@@ -12,7 +12,7 @@ import Menu from '@/components/Layout/Menu.vue'
         <Head></Head>
       </el-header>
       <el-container>
-        <el-aside>
+        <el-aside width="auto">
           <Menu></Menu>
         </el-aside>
         <el-container>

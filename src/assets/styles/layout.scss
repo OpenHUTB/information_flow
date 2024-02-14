@@ -3,16 +3,16 @@
 .common-layout {
   width: 100%;
   .el-header {
-    height: 80px;
+    height: 74px;
     padding: 0 24px;
     background-color: $mainColor;
   }
   .el-aside {
-    width: 240px;
-    background-color: rgb(217, 236, 255);
+    // max-width: 240px;
+    // background-color: rgb(217, 236, 255);
   }
   .el-main {
-    min-height: calc(100vh - 80px);
-    background-color: $backMain;
+    min-height: calc(100vh - 74px);
+    background-color: #ffffff;
   }
 }
